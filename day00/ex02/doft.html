@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Day of the 42</title>
-    <style>
-        body {
-            background-color: #505050;
-        }
-        .wrap {
-            horiz-align: center;
-        }
-        .img img {
-            box-shadow: 7px 7px 5px; /* Тень */
-            /*padding: 10px; !* Поля вокруг текста *!*/
-            border-radius: 10px; /* Радиус скругления */
-        }
-    </style>
+    <link rel="stylesheet" href="doft.css">
 </head>
 <body>
-<div class="wrap">
-    <div class="img">
-        <img src="resources/day_of_the_42.png">
+<div class="global">
+    <div class="wrap">
+        <div class="grey_box horizontal">
+            <img class="img_horizontal" src="resources/day_of_the_42.png" >
+        </div>
+        <div class="container">
+            <div class="grey_box vertical left">
+                <img  class="side_image" src="resources/arrow.png">
+            </div>
+            <div class="grey_box center"></div>
+            <div class="grey_box vertical right"></div>
+        </div>
     </div>
 </div>
-
 
 </body>
 </html>
