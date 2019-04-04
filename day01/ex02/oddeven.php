@@ -1,19 +1,23 @@
 #!/usr/bin/php
 <?php
-print ("Enter a number: ");
-if ($argc == 1)
+while (1)
 {
-    print ("'' is not a number");
-}
-else
-{
-    if (is_int($argv[1]))
+    print ("Enter a number: ");
+    $value = trim(fgets(STDIN));
+    if (feof(STDIN))
     {
-        print ($argv[1]);
+        print ("\n");
+        exit();
+    }
+    elseif (is_numeric($value))
+    {
+        if ($value % 2 == 0)
+            print ("The number ".$value." is even\n");
+        else
+            print ("The number ".$value." is odd\n");
     }
     else
-    {
-        print ("'".$argv[1]."' is not a number");
-    }
+        print ("'".$value."' is not a number\n");
 }
 ?>
+
