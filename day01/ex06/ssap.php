@@ -2,10 +2,11 @@
 if ($argc > 1)
 {
     for ($i = 1; $i < $argc; $i++) {
-        array_push($string, explode(' ', preg_replace('/ +/', ' ', $argv[$i])));
+        $string = preg_replace('/ +/', ' ', $argv[$i]);
+        $arr = array_push($string, explode(' ', ));
     }
-    sort($string);
-    foreach ($string as $s) {
+    sort($arr);
+    foreach ($arr as $s) {
         print ($s."\n");
     }
 }
