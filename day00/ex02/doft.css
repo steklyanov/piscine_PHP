@@ -7,8 +7,6 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-    /*justify-content: space-between;*/
     position: relative;
 }
 .wrap {
@@ -17,7 +15,6 @@ body {
     display: flex;
     width: 100%;
     height: 650px;
-    /*flex-wrap: wrap;*/
 }
 .grey_box {
     background: #909090;
@@ -52,12 +49,12 @@ body {
     right: 50px;
     bottom: -15px;
 }
+
 .container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    /*height: 650px;*/
     position: relative;
 }
 .vertical {
@@ -75,7 +72,7 @@ body {
     align-content: stretch;
     /*display: block;*/
     justify-content: center;
-    width: 80%;
+    width: 250%;
     height: 120%;
 }
 
@@ -110,4 +107,25 @@ body {
     border-radius: 10px;
     margin-top: 15px;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+}
+
+.big_word {
+    font-size: 2vw;
+    font-family: Georgia;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.ordinateur {
+    text-shadow: 6px 6px 5px red;
+}
+
+.submit {
+    width: 80%;
 }
