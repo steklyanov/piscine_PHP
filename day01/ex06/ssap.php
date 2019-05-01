@@ -4,8 +4,9 @@ if ($argc > 1)
 {
     $arr = array();
     for ($i = 1; $i < $argc; $i++) {
-        $string = preg_replace('/ +/', ' ', $argv[$i]);
-        $arr = array_push($string, explode(' ', $st));
+        $string = explode(' ', $argv[$i]);
+        $string = array_filter($string, function ($v){ return $v != "";});
+        $arr = array_merge($arr, $string);
     }
     sort($arr);
     foreach ($arr as $s) {

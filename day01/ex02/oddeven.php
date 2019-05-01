@@ -20,4 +20,3 @@ while (1)
         print ("'".$value."' is not a number\n");
 }
 ?>
-

@@ -2,5 +2,5 @@
 <?php
 include ("ft_split.php");
 
-print_r(ft_split("AAA   Hello      World"));
+print_r(ft_split("   AA   A   Hello     Worl   d       "));
 ?>
