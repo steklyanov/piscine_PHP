@@ -1,23 +1,15 @@
 #!/usr/bin/php
 <?php
 
-function img_match($str)
+function replace($values)
 {
-//
-//    preg_replace("@ @",)
+    $values = preg_replace_callback('/(?<=title=")(?:.|\n)*(?=")/iU', function ($match) {return strtoupper($match[0]);}, $values);
+    $values = preg_replace_callback('/(?<=>)(?!<.*>)(?:.|\n)*(?=<)/iU', function ($match) {return strtoupper($match[0]);}, $values);
+    return $values[0];
 }
-
-
-function all_matches($str)
+if ($argc == 2)
 {
-    print_r ($str);
-    foreach ($str as $s)
-        preg_replace_callback("@<a href(.)*>(.)*</a>@", "img_match", $s);
-
-
+    $file = file_get_contents($argv[1]);
+    $file = preg_replace_callback('/<a(?:.|\n)+<\/a>/iU', 'replace', $file);
+    print($file);
 }
-
-
-$tab = file($argv[1]);
-foreach ($tab as $string)
-    preg_replace_callback('@title="(.)*"@', "all_matches", $string);
