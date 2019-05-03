@@ -6,5 +6,5 @@ if ($_GET['action'] && $_GET['name'])
     else if ($_GET['action'] === 'get' && $_GET['name'] && $_COOKIE[$_GET['name']])
         echo $_COOKIE[$_GET['name']].'\n';
     else if ($_GET['action'] === 'del' && $_GET['name'])
-        setcookie($_GET['name'], '', time()-1);
+        setcookie($_GET['name'], '', time() - 1);
 }
