@@ -1,5 +1,5 @@
 <?php
-include ('auth.php');
+include('auth.php');
 session_start();
 
 if ($_GET["login"] and $_GET["passwd"] and $_GET["submit"] === "OK")

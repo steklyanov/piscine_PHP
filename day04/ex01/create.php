@@ -25,7 +25,8 @@ if ($_POST["submit"] === "OK" and $_POST["login"] and $_POST["passwd"])
     {
         $pass = hash('whirlpool',$_POST["passwd"]);
         $new = array("login" => $_POST["login"], "passwd" => $pass);
-        array_push($arr, $new);
+        $arr[] = $new;
+//        array_push($arr, $new);
         echo ("OK\n");
     }
     file_put_contents('../private/passwd', serialize($arr));
