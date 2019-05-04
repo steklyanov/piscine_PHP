@@ -19,3 +19,8 @@ if (!$link) {
     die("Connection failed: " . mysqli_connect_error());
 }
 print ("succes");
+
+
+
+
+https://tutsplanet.com/simple-php-shopping-cart/

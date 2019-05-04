@@ -6,17 +6,45 @@
 
 </head>
 <body>
+<?php
+
+if (isset($_POST['order'])) {
+    session_start();
+
+    if ($_POST['order']) {
+
+        $_SESSION["cart"] = $_POST["add_to_cart"];
+        echo "<div><h2 style='color: green'>Your order has been sent</h2></div>";
+        }
+    }
+
+
+
+
+?>
 <div>
     <?php include("../components/navigation.php");?>
-    <h2>Welcome to my website!</h2>
-    <p>Some content goes here! Let's go with the classic "lorem ipsum."</p>
-
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
+    <?php $products = array_map('str_getcsv', file('../base.csv')); ?>
+    <div class="row">
+        <div class="container" style="width:600px;">
+            <?php foreach($products as $product):?>
+                <div class="col-md-4">
+                    <div class="thumbnail"> <img src="<?php print $product[3]?>" alt="Lights">
+                        <div class="caption">
+                            <p style="text-align:center;"><?php print $product[1]?></p>
+                            <p style="text-align:center;color:#04B745;"><b>$<?php print $product[4]?></b></p>
+                            <form method="post" action="order">
+                                <p style="text-align:center;color:#04B745;">
+                                    <button type="submit" name="add_to_cart" value="<?php print $product[0]?>">Add To Cart</button>
+                                    <input type="submit" name="submit" value="OK"/>
+                                    <input type="hidden" name="sku" value="<?php print $product[0]?>">
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach;?>
+        </div>
     <?php include("../components/footer.php");?>
 </div>
 </body>
