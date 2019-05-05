@@ -1,9 +1,10 @@
-<?php session_start()?>
 <?php include("../includes/a_config.php");?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php include("../components/head-tag-contents.php");?>
+    <?php session_start()?>
+
 </head>
 <body>
 <div>
