@@ -1,4 +1,3 @@
-
 <?php
 
 function save_changes($products)

@@ -29,10 +29,18 @@
         }
         $products = $products2;
         print_r($products);
-        print ($_SESSION['suma']);
-//        foreach($products2 as $el1 => $t1)
-//            foreach ($products2 as $el2 => $t2)
-//                if()
+//        print ($_SESSION['suma']);
+        foreach($products2 as $el1 => $t1)
+        {
+//            print_r ($t1[0]);
+//            foreach ($products as $el2 => $t2)
+//            {
+//                if($t1[0] === $t2[0])
+//                    unset($products[$el2]);
+//            }
+
+        }
+
     }
 
     ?>

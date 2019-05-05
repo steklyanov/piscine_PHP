@@ -1,4 +1,10 @@
 <?php
+    function save_changes_category($categories)
+    {
+        $fp = fopen("../categories.csv", 'w');
+        fputcsv($fp, $categories[0]);
+        fclose($fp);
+    }
 	$_POST["product_id"] = (isset($_POST["product_id"])) ? $_POST["product_id"] : 0;
 	$_POST["product_name"] = (isset($_POST["product_name"])) ? $_POST["product_name"] : 0;
 	$_POST["description"] = (isset($_POST["description"])) ? $_POST["description"] : 0;
@@ -6,16 +12,6 @@
 	$_POST["price"] = (isset($_POST["price"])) ? $_POST["price"] : 0;
 	$_POST["category"] = (isset($_POST["category"])) ? $_POST["category"] : 0;
 
-    function save_changes($products)
-    {
-        $fp = fopen("../base.csv", 'w');
-        foreach ($products as $field)
-        {
-            fputcsv($fp, $field);
-        }
-
-        fclose($fp);
-    }
 	if ($_POST["submit"] === "DELETE_POST")
 	{
 		include("populate_csv.php");
@@ -31,13 +27,13 @@
 		include("populate_csv.php");
 		create_new_product(0, $_POST["product_name"], $_POST["description"], $_POST["image"], $_POST["price"], $_POST["category"]);
 	}
-	elseif ($_POST["submit"] === "UPLOAD")
+	elseif ($_POST["submit"] === "UPLOAD" and isset($_POST["product_id"]))
 	{
 		$products = array_map('str_getcsv', file('../base.csv'));
-		print_r ($products);
 	}
     elseif($_POST["submit"] === "ADD_ITEM")
     {
+        include("populate_csv.php");
         $products = array_map('str_getcsv', file('../base.csv'));
         $catalog = array_map('str_getcsv', file('../categories.csv'));
         if ($_POST['check_list'])
@@ -48,7 +44,31 @@
             }
 
     }
-    session_start();
+    if(isset($_POST['delete']))
+    {
+        $catalog = array_map('str_getcsv', file('../categories.csv'));
+        print_r($catalog);
+        foreach ($_POST['check_list'] as $key => $value)
+            unset($catalog[0][$value]);
+        save_changes_category($catalog);
+    }
+
+    if(isset($_POST['create']))
+    {
+        $catalog = array_map('str_getcsv', file('../categories.csv'));
+        array_push($catalog[0], $_POST['category']);
+        save_changes_category($catalog);
+    }
+    if(isset($_POST['add_to_item']))
+    {
+        $products = array_map('str_getcsv', file('../base.csv'));
+        $catalog = array_map('str_getcsv', file('../categories.csv'));
+        foreach($_POST['check_list'] as $key => $value)
+
+            print ($key.":".$value);
+
+    }
+        session_start();
 ?>
 <?php include("../includes/a_config.php");?>
 <!DOCTYPE html>
@@ -82,12 +102,35 @@
             <div>
                 <?php $catalog = array_map('str_getcsv', file('../categories.csv')); ?>
                 <?php foreach($catalog[0] as $key => $group):?>
-                    <!--                --><?php //print($key) ?>
                     <input type="checkbox" name="check_list[]" value="<?php echo ($key) ?>"> <?php echo ($group); ?><br>
                 <?php endforeach;?>
                 <input type="submit" class="button11" name="submit" value="ADD_ITEM" />
             </div>
 
+        </form>
+        <!-- DELETE CATEGORY -->
+        <form action="add_new_product.php", method="post">
+            <?php $catalog = array_map('str_getcsv', file('../categories.csv')); ?>
+            <?php foreach($catalog[0] as $key => $group):?>
+                <?php print($key) ?>
+                <input type="checkbox" name="check_list[]" value="<?php echo ($key) ?>"> <?php echo ($group); ?><br>
+            <?php endforeach;?>
+            <input type="submit" name="delete" value="Delete category" />
+        </form>
+        <!--    ADD CATEGORY -->
+        <form action="add_new_product.php", method="post">
+            <?php $catalog = array_map('str_getcsv', file('../categories.csv')); ?>
+            <input type="text" name="category" value=""><br>
+            <input type="submit" name="create" value="Create category" />
+        </form>
+
+        <form action="add_new_product.php", method="post">
+            <?php $catalog = array_map('str_getcsv', file('../categories.csv')); ?>
+            <?php foreach($catalog[0] as $key => $group):?>
+                <?php print($key) ?>
+                <input type="checkbox" name="check_list[]" value="<?php echo ($key) ?>"> <?php echo ($group); ?><br>
+            <?php endforeach;?>
+            <input type="submit" name="add_to_item" value="Add categories" />
         </form>
 
     </div>

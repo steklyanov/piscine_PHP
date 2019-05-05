@@ -134,18 +134,19 @@
 
 
     .create_mod fieldset input{
-        width:50vw;
+        /*width:50vw;*/
         height: 30px;
         text-align: center;
 
     }
     .create_mod fieldset input.description {
         width:50vw;
-        height:40vh;
+        height:20vh;
     }
     .create_mod fieldset input.upload {
-        width:70px;
-        height:40px;
+
+        width:10px;
+        /*height:40px;*/
     }
     .create_mod fieldset input.how_much {
         width:25vw;
@@ -202,53 +203,10 @@
         padding:0;
         border:none;
         /*float:left;*/
-        display:inline;
+        /*display:inline;*/
         margin-left:26px;
     }
-    /* формируем подписи к полям ввода */
-    form label{display:block;color:#5B5B5B;margin-bottom:1px;}
-    form input, #form textarea{
-        font:13px Trebuchet MS, Arial, Helvetica, Sans-Serif;
-        color:#6B6B6B;
-        /* отключаем бордюры у инпутов и текстового поля */
-        border: none;
-        /* закругляем углы полей ввода */
-        -moz-border-radius:.3em;
-        -webkit-border-radius:.3em;
-        border-radius:.3em;
-        background-color: #F7F7F7;
-        padding:3px;
-        /* добавляем внутренние тени у инпутов и текстового поля */
-        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3);
-        -moz-box-shadow: inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3);
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.1), inset 0 1px 2px rgba(0,0,0,0.3);
-        color: #5B5B5B;
-    }
-    form input {
-        /* устанавливаем ширину инпутов */
-        width:224px;
-    }
-    /* изменяем оформление полей ввода при фокусе */
-    form input:focus, #form textarea:focus {
-        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2), inset 0 1px 2px rgba(0,0,0,0.4);
-        -moz-box-shadow: inset 0 0 5px rgba(0,0,0,0.2), inset 0 1px 2px rgba(0,0,0,0.4);
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2), inset 0 1px 2px rgba(0,0,0,0.4);
-        background: #F2F2F2;
-        color: #333;
-    }
-    form textarea{
-        /* устанавливаем ширину текстового поля */
-        width:286px;
-        height:120px;
-        overflow:auto;
-    }
-    /* формируем нижний сектор формы */
-    form .submit{
-        clear:both;
-        padding: 0px 25px 20px;
-        margin:0;
-        /*float:right;*/
-    }
+
     /* оформляем кнопку отправки */
     form button{
         /* устанавливаем необходимую ширину кнопки */
@@ -303,20 +261,20 @@
     }
     .create_mod fieldset input.description {
         width:50vw;
-        height:40vh;
+        /*height:40vh;*/
     }
     .create_mod fieldset input.upload {
-        width:70px;
-        height:40px;
+        width:70vw;
+        /*height:40vw;*/
     }
     .create_mod fieldset input.how_much {
         width:25vw;
-        height:30px;
+        /*height:30px;*/
         float:left;
     }
     .create_mod fieldset input.id {
-        width:50px;
-        height:30px;
+        width:50vw;
+        /*height:30vw;*/
     }
 
     .dropdown_content{
