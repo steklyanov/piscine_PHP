@@ -24,3 +24,23 @@ print ("succes");
 
 
 https://tutsplanet.com/simple-php-shopping-cart/
+
+Array ( 
+    [0] => Array ( 
+        [0] => 1 
+        [1] => phone 
+        [2] => phone description 
+        [3] => ../img/01.jpeg 
+        [4] => 10$ ) 
+    [1] => Array ( 
+        [0] => 2 
+        [1] => phone2 
+        [2] => phone description2 
+        [3] => ../img/02.jpeg 
+        [4] => 15$ ) 
+    [2] => Array ( [0] => 3 [1] => php developer [2] => phone description2 [3] => ../img/03.jpeg [4] => 0$ ) 
+    [3] => Array ( [0] => 4 [1] => nothing [2] => phone description2 [3] => ../img/04.jpeg [4] => 100$ ) )
+    
+    
+    [passwd] => beeone 
+    [loggued_on_user] => [cart] => Array ( [0] => 1 [1] => 2 [2] => 2 ) )

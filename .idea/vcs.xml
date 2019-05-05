@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/piscine_php-day00" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/rush00/basic-sample-php-template-example" vcs="Git" />
   </component>
 </project>

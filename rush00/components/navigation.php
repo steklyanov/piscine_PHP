@@ -10,7 +10,7 @@
             <a class="nav-link <?php if ($CURRENT_PAGE == "Basket") {?>active<?php }?>" href="basket.php">Basket</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if ($CURRENT_PAGE == "Log in") {?>active<?php }?>" href="login.php">log in</a>
+            <a class="nav-link <?php if ($CURRENT_PAGE == "Log in") {?>active<?php }?>" href="login_page.php">log in</a>
         </li>
 	</ul>
 </div>

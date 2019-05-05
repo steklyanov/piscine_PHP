@@ -3,44 +3,26 @@
 <html>
 <head>
     <?php include("../components/head-tag-contents.php");?>
-
 </head>
 <body>
-<?php
-
-if (isset($_POST['order'])) {
-    session_start();
-
-    if ($_POST['order']) {
-
-        $_SESSION["cart"] = $_POST["add_to_cart"];
-        echo "<div><h2 style='color: green'>Your order has been sent</h2></div>";
-        }
-    }
-
-
-
-
-?>
 <div>
     <?php include("../components/navigation.php");?>
     <?php $products = array_map('str_getcsv', file('../base.csv')); ?>
-    <div class="row">
-        <div class="container" style="width:600px;">
+        <div class="container flex-container" >
             <?php foreach($products as $product):?>
-                <div class="col-md-4">
-                    <div class="thumbnail"> <img src="<?php print $product[3]?>" alt="Lights">
-                        <div class="caption">
-                            <p style="text-align:center;"><?php print $product[1]?></p>
-                            <p style="text-align:center;color:#04B745;"><b>$<?php print $product[4]?></b></p>
-                            <form method="post" action="order">
-                                <p style="text-align:center;color:#04B745;">
-                                    <button type="submit" name="add_to_cart" value="<?php print $product[0]?>">Add To Cart</button>
-                                    <input type="submit" name="submit" value="OK"/>
-                                    <input type="hidden" name="sku" value="<?php print $product[0]?>">
-                                </p>
-                            </form>
-                        </div>
+                <div class="product-item">
+                    <img class="img" src="<?php print $product[3]?>" alt="Lights">
+                    <div class="product-list">
+                        <p style="text-align:center;"><?php print $product[1]?></p>
+                        <p style="text-align:center;color:#04B745;"><b><?php print $product[4]?></b></p>
+                        <form method="POST" action="saving_basket.php">
+                            <p style="price">
+                                <button class="button" type="submit" name="order" value="<?php print $product[0]?>">Add To Cart</button>
+                                <input type="submit" name="submit" value="Basket"/>
+                                <input type="hidden" name="sku" value="<?php print $product[0]?>">
+                                <button class="button" type="submit" name="delete" value="<?php print $product[0]?>">Delete</button>
+                            </p>
+                        </form>
                     </div>
                 </div>
             <?php endforeach;?>

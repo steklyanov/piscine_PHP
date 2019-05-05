@@ -1,109 +1,73 @@
-<?php include("../includes/a_config.php");?>
-<!DOCTYPE html>
-<html>
-<head>
-    <?php include("../components/head-tag-contents.php");?>
-
-</head>
-<body>
-<?php include("../components/navigation.php");?>
-<div>
-    <?php
-    function start_session()
+<?php
+	function auth($login, $passwd)
+	{
+		$path = "../private/passwd";
+		if (!file_exists($path))
+			return false;
+		$cont = file_get_contents($path);
+		$arrays = unserialize($cont);
+		foreach($arrays as $key => $value)
+		{
+			if($value["login"] === $login)
+			{
+				if ($value["passwd"] === hash("whirlpool", $passwd))
+					return true;
+				else
+					return false;
+			}
+		}
+		return false;
+	}
+    session_start();
+    if ($_POST["submit"] === "Sign In")
     {
-        session_start();
-        if ($_GET["login"] and $_GET["passwd"] and $_GET["submit"] === "OK")
-        {
-            $_SESSION["login"] = $_GET["login"];
-            $_SESSION["passwd"] =$_GET["passwd"];
+	    if (auth($_POST["login"], $_POST["passwd"]))
+	    {
+            $_SESSION["loggued_on_user"] = $_POST["login"];
+            $_SESSION["login"] = $_POST["login"];
+            header("Refresh: 3; index.php");
+		    echo "Hello, ".$_SESSION["loggued_on_user"]."\n";
+    	}
+    	else
+    	{
+            header("Refresh: 3; login_page.php");
+            include("login_page.php");
+            unset($_SESSION["loggued_on_user"]);
+    		echo "Incorrect Login or Password\nCheck input or Create acc";
         }
     }
-
-    function auth($login, $passwd)
-    {
-        $val = unserialize(file_get_contents('../htdocs/private/passwd'));
-        if (!$val || !$login || !$passwd)
-            return FALSE;
+    elseif ($_POST["submit"] === "Create acc")
+        header("Location: create_accpage.php");
+    elseif ($_POST["submit"] === "Delete acc")
+    {	
+        if (auth($_POST["login"], $_POST["passwd"]))
+        {
+            $path = "../private/passwd";
+            $cont = file_get_contents($path);
+            $arrays = unserialize($cont);
+            unset($arrays[$_POST["login"]]);
+            unset($_SESSION["loggued_on_user"]);
+            unset($_SESSION["login"]);
+            unset($_SESSION["card"]);
+            $cont = serialize($arrays);
+            file_put_contents($path, $cont, LOCK_EX);
+            header("Refresh: 2; index.php");
+            include("login_page.php");
+            echo "Your account deleted\n";
+        }
         else
         {
-            foreach($val as $key => $value)
-            {
-                if ($value['login'] === $login && $value['passwd'] === hash("whirlpool", $passwd))
-                {
-                    start_session();
-                    return TRUE;
-
-                }
-
-            }
-            return FALSE;
+            header("Refresh: 3; login_page.php");
+            include("login_page.php");
+            echo "Incorrect Login or Password\n";
         }
     }
-
-
-//    session_start();
-
-    if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['login']))
+    elseif ($_POST["submit"] === "Log Out")
     {
-        if (auth($_GET['login'], $_GET['passwd']) == TRUE)
-        {
-            $_SESSION['loggued_on_user'] = $_GET['login'];
-            echo "OK\n";
-        }
-        else
-        {
-            $_SESSION['loggued_on_user'] = "";
-            echo "ERROR\n";
-        }
+        unset($_SESSION["login"]);
+        unset($_SESSION["card"]);
+        header("Refresh: 2; index.php");
+        include("login_page.php");
+        echo "Log Out...Good Bye\n";
     }
-    else
-    {
-        if (!$_SESSION['cart'])
-            $_SESSION['cart'] = [''];
-    }
-
-
-    if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['create']))
-    {
-        $arr = array();
-        if (!(file_exists('../private')))
-            mkdir('../private');
-        if (!(file_exists('../private/passwd')))
-            file_put_contents('../private/passwd', '');
-        else
-        {
-            $arr = unserialize(file_get_contents('../private/passwd'));
-            foreach ($arr as $key => $value)
-            {
-                if ($value["login"] === $_POST["login"])
-                {
-                    echo ("ERROR\n");
-                    return false;
-
-                }
-            }
-        }
-        $pass = hash('whirlpool',$_POST["passwd"]);
-        $new = array("login" => $_POST["login"], "passwd" => $pass);
-        $arr[] = $new;
-        echo ("OK\n");
-        file_put_contents('../private/passwd', serialize($arr));
-    }
-
 ?>
-
-    <div class="form">
-        <form method="POST" action="">
-            <fieldset>
-                <legend>Create account</legend>
-                <input type="text" name="login" placeholder="Login" value="" />
-                <input type="password" name="passwd" placeholder="Password" value="" />
-            </fieldset>
-            <input type="submit" name="create" value="Create acc" />
-            <input type="submit" name="login" value="Sign In" />
-        </form>
-    </div>
-    <?php include("../components/footer.php");?>
-</div>
-</body>
-</html>
