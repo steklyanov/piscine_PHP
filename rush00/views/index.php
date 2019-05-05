@@ -3,6 +3,7 @@
 <html>
 <head>
 	<?php include("../components/head-tag-contents.php");?>
+    <?php session_start()?>
 
 </head>
 <body>

@@ -12,5 +12,8 @@
         <li class="nav-item">
             <a class="nav-link <?php if ($CURRENT_PAGE == "Log in") {?>active<?php }?>" href="login_page.php">log in</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if ($_SESSION["login"] != "admin") {?>invisible<?php }?>" href="admin.php">Admin</a>
+        </li>
 	</ul>
 </div>

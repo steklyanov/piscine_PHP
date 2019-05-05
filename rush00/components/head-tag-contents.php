@@ -7,6 +7,11 @@
 
 
 <style>
+    .invisible
+    {
+        display: none;
+    }
+
     body:
     {
         /*display: flex;*/
