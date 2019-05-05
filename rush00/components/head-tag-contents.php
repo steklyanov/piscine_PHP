@@ -124,4 +124,10 @@
         -webkit-flex-flow: row wrap;
         justify-content: space-around;
     }
+
+    .confirm_field
+    {
+        padding: 10px; /* Поля вокруг текста */
+        border-radius: 5px;
+    }
 </style>
