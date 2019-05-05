@@ -29,6 +29,8 @@
                     </div>
                 </div>
             <?php $summa += ($products[$num][4] * $key) ?>
+                <?php $_SESSION['suma'] = $summa;?>
+                <?php $_SESSION[$products[$num][1]] = $key;?>
             <?php }};?>
         </div>
         <form method="POST" action="saving_basket.php" class="confirm_field">

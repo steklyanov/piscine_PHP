@@ -176,8 +176,8 @@
         -webkit-box-shadow: 0 0 5px #CCCCCC, 1px 1px 0 #FFFFFF inset, -1px -1px 0 #FFFFFF inset, 0 0 15px #DDDDDD inset;
         -moz-box-shadow: 0 0 5px #CCCCCC, 1px 1px 0 #FFFFFF inset, -1px -1px 0 #FFFFFF inset, 0 0 15px #DDDDDD inset;
         box-shadow: 0 0 5px #CCCCCC, 1px 1px 0 #FFFFFF inset, -1px -1px 0 #FFFFFF inset, 0 0 15px #DDDDDD inset;
-        margin: 0 auto;
-        overflow: hidden;
+        /*margin: 0 auto;*/
+        /*overflow: hidden;*/
         padding-top: 10px;
         text-align: left;
         /* устанавливаем необходимую ширину формы в зависимости от дизайна
@@ -201,7 +201,7 @@
         margin:0;
         padding:0;
         border:none;
-        float:left;
+        /*float:left;*/
         display:inline;
         margin-left:26px;
     }
@@ -293,6 +293,68 @@
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
         /* градиент для IE6-9 */
         filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#2F96B4', EndColorStr='#5BC0DE', GradientType=0);
+    }
+
+    .create_mod fieldset input{
+        width:50vw;
+        height: 30px;
+        text-align: center;
+
+    }
+    .create_mod fieldset input.description {
+        width:50vw;
+        height:40vh;
+    }
+    .create_mod fieldset input.upload {
+        width:70px;
+        height:40px;
+    }
+    .create_mod fieldset input.how_much {
+        width:25vw;
+        height:30px;
+        float:left;
+    }
+    .create_mod fieldset input.id {
+        width:50px;
+        height:30px;
+    }
+
+    .dropdown_content{
+        height: 90px;
+        font-size: 14px;
+        display:none;
+        position:absolute;
+        background-color: 0;
+        text-align: center;
+        padding:0;
+        margin: 0;
+        line-height: 10px;
+    }
+    .adm{
+        height: 10px;
+    }
+    .dropdown:hover .dropdown_content{
+        display: block;
+        background-color: red;
+    }
+    .dropdown{
+        display: inline-block;
+    }
+    fieldset .phone{
+        text-align: center;
+        width: 120px;
+    }
+    fieldset .account{
+        text-align: center;
+        width: 150px;
+    }
+    fieldset .ac_login{
+        text-align: center;
+        width: 100px;
+    }
+    fieldset .address{
+        text-align: center;
+        width: 350px;
     }
 
 </style>

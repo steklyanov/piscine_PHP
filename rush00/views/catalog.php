@@ -27,8 +27,12 @@
                     if ($value === $value2)
                         array_push($products2, $products[$key]);
         }
-        print_r($products2);
         $products = $products2;
+        print_r($products);
+        print ($_SESSION['suma']);
+//        foreach($products2 as $el1 => $t1)
+//            foreach ($products2 as $el2 => $t2)
+//                if()
     }
 
     ?>
