@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 //$tmp =array(
 //    array('1', 'phone', 'phone description', '../img/01.jpeg', '10$'),
