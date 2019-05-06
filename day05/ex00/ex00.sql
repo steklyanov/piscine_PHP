@@ -1,1 +1,1 @@
-CREATE DATABASE db_mrazz
+CREATE DATABASE db_mmraz
