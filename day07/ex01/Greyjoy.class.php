@@ -1,6 +1,4 @@
 <?php
 class Greyjoy {
-    public function announceMotto() {
-        print ("We do not sow");
-    }
+    protected $familyMotto = 'We do not sow';
 }
