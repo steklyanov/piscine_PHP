@@ -34,7 +34,7 @@
             balloon.style.width = balloon.offsetWidth - 5 + "px";
             balloon.style.height = balloon.offsetHeight - 5 + "px";
         }
-        color == 0 ? color = 2 : color--;
+        color === 0 ? color = 2 : color--;
         balloon.style.backgroundColor = colors[(color) % 3];
     })
 

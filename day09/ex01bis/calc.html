@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calc</title>
+</head>
+<body>
+
+<form action="">
+
+    <input type="text" name="first-operand" placeholder="Number">
+    <select name="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" name="second-operand" placeholder="Number">
+    <input type="submit" value="Try me!">
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function display(text)
+    {
+        alert(text);
+        console.log(text);
+        return false;
+    }
+    $('form').on('submit', function (event) {
+        event.preventDefault();
+        var form = $(this);
+        var first = form.find('input[name="first-operand"]').val();
+        var operator = form.find('select[name="operator"]').val();
+        var second = form.find('input[name="second-operand"]').val();
+        // Validation
+        if (parseInt(first) != first || parseInt(second) != second)
+            return display('Error :(');
+        first = parseInt(first);
+        second = parseInt(second);
+        if (first < 0 || second < 0)
+            return display('Error :(');
+        if (['+', '-', '*', '/', '%'].indexOf(operator) === -1)
+            return display('Error :(');
+        if ((operator === '/' || operator === '%') && second === 0)
+            return display('It’s over 9000!');
+        // Calcul
+        switch (operator) {
+            case '+':
+                display((first + second).toString());
+                break;
+            case '-':
+                display((first - second).toString());
+                break;
+            case '*':
+                display((first * second).toString());
+                break;
+            case '/':
+                display((first / second).toString());
+                break;
+            case '%':
+                display((first % second).toString());
+                break;
+        }
+    });
+    setInterval(function () {
+        alert('Please, use me...');
+    }, 30000)
+</script>
+
+</body>
+</html>
